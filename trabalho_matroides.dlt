@@ -1,0 +1,61 @@
+<document lang="pt-BR" type="article" theme-accent="green">
+  <title>Matróides</title>
+
+  <section id="sec:id">
+    <title>Definição e fundamentação teórica</title>
+    A otimização combinatória busca selecionar, dentro de um conjunto finito de alternativas, 
+    uma solução discreta que maximize ou minimize determinada função de custo. No estudo de algoritmos e otimização combinatória, 
+    a <b>estratégia gulosa</b> <i>(greedy algorithm)</i> destaca-se pela sua simplicidade e eficiência: em cada etapa, 
+    faz-se a escolha que parece localmente mais vantajosa, na expectativa de alcançar um ótimo global. O difícil é saber 
+    quando essa simplicidade basta: o <b>algoritmo de Kruskal</b> para árvores geradoras mínimas é ótimo, 
+    mas a mesma ideia aplicada ao problema do conjunto independente máximo em grafos pode falhar de forma arbitrária.
+
+ 
+    Tendo isso em vista, foi desenvolvida a <b>Teoria de Matróides</b>, a 
+    qual fornece a caracterização matemática exata para a classe de problemas estruturais
+    em que a escolha localmente ótima resulta invariavelmente no ótimo global. Ela foi 
+    introduzida por Hassler Whitney em 1935, e posteriormente foi estendida por Richard Rado e 
+    Jack Edmonds. 
+
+    <subsection>
+      <title>Definição axiomática:</title>
+      Uma <b>matróide</b> é definida como um par ordenado $(M = (E, \mathcal{I}))$, em que 
+      $E$ é um conjunto finito (denominado <i>conjunto base</i> ou <i>ground set</i>) e $\mathcal{I}$ é uma 
+      família de subconjuntos de $E$
+      (cujos elementos são chamados de <i>conjuntos independentes</i>), que satisfaz os três seguintes axiomas fundamentais: 
+      <list marker='number'>
+        <item> <b>(Não-vazio)</b>$\emptyset \in \mathcal{I}$; </item>
+        <item> <b>(Hereditariedade)</b> Se $A \in \mathcal{I}$ e $B \subseteq A$, então $B \in \mathcal{I}$;</item>
+        <item> <b>(Propriedade de troca)</b> Se $A, B \in \mathcal{I}$ e $|A| < |B|$, então existe $x \in B - A$ tal que $(A \cup \{x\}) \in \mathcal{I}$;</item>
+      </list>
+      Além dos axiomas básicos, definimos alguns conceitos complementares essenciais:
+      <list>
+        <item> 
+          <b>Base:</b> um conjunto independente maximal em $M$, ou seja, um conjunto 
+          $B \in \mathcal{I}$ que não está estritamente contido em nenhum outro conjunto 
+          independente. Uma consequência direta da propriedade 
+          de troca é que <b>todas as bases de uma matroide possuem a mesma cardinalidade</b>.
+        </item>
+        <item>
+          <b>Circuito:</b> um conjunto dependente minimal em $M$, isto é, um conjunto $C \subseteq E$ tal que $C \notin \mathcal{I}$,
+          mas para todo $x \in C, (C \setminus \{x\}) \in \mathcal{I}$.
+        </item>
+        <item>
+          <b>Função Posto (<i>Rank</i>)</b>: Função $r: 2^E \to \mathbb{Z_{\geq 0}}$ dada por $r(A) = max\{|X|: X \subseteq A, X \in \mathcal{I}\}$,
+          a qual mede a maior cardinalidade de um subconjunto independente contido em $A$. 
+        </item>
+      </list>
+    </subsection>
+  </section>
+
+  <section>
+    <title>Por que a <i>Propriedade de Troca</i> garante a correção de algoritmos gulosos?</title>
+    Considere o problema de maximização com pesos: dado uma matróide $M = (E, \mathcal{I})$ e uma função de peso 
+    $w: E \to \mathbb{R}_{+}$, desejamos encontrar uma base $ B \in\mathcal{I}$ que maximize a soma dos pesos 
+    $(w(B) = \sum _{e \in B} w(e)$.
+
+
+    O <b>Algoritmo Guloso Geral</b> opera ordenando os elementos de $E$ de forma decrescente
+    de peso ($w(e_1)$)
+  </section>  
+</document>
